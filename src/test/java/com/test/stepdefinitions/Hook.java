@@ -36,6 +36,7 @@ public class Hook {
 	@After
 	public void tearDown(Scenario scenario) {
 		System.out.println("after");
+		CurrentThreadInstance.getDriver().close();
 	}
 
 }

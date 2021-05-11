@@ -1,7 +1,0 @@
-com\test\stepdefinitions\Hook.class
-com\test\stepdefinitions\StepDefinitions.class
-com\test\runner\CucumberRunnerClass.class
-com\test\runner\TestRunner.class
-com\test\stepdefinitions\InvoicingSteps.class
-com\test\stepdefinitions\TestUtil.class
-com\test\stepdefinitions\LoginSteps.class
