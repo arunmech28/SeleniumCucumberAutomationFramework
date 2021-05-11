@@ -1,0 +1,7 @@
+com\framework\pages\LoginPage.class
+com\framework\utils\FeatureConverter.class
+com\framework\constants\Constants.class
+com\framework\utils\ExcelRead.class
+com\framework\utils\Driver.class
+com\framework\pages\BasePage.class
+com\framework\utils\CurrentThreadInstance.class
