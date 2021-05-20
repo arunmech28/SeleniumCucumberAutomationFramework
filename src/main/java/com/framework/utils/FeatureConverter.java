@@ -14,7 +14,17 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * @author arunpand
+ * 
+ *
+ */
 public class FeatureConverter {
+	/**
+	 * @author arunpand
+	 * @param args
+	 * @throws Throwable
+	 */
 	public static void main(String[] args) throws Throwable {
 		System.out.println("arun test");
 		File ru = new File(System.getProperty("user.dir") + "/src/test/resources/runnablefeatures/");
@@ -23,6 +33,11 @@ public class FeatureConverter {
 		FeatureConverter.getRunnableFeaturesList();
 	}
 
+	/**
+	 * @author - arunpand
+	 * @returnType - void
+	 * @throws Throwable
+	 */
 	public static void getRunnableFeaturesList() throws Throwable {
 		File file = new File(System.getProperty("user.dir") + "/src/test/resources/RunManager.xlsx");
 		FileInputStream fis = new FileInputStream(file);
@@ -119,8 +134,16 @@ public class FeatureConverter {
 
 	}
 
+	/**
+	 * Gets the scenario data.
+	 *
+	 * @author arunpand
+	 * @param wb the wb
+	 * @return the scenario data
+	 */
 	public static Map<String, List<String>> getScenarioData(XSSFWorkbook wb) {
 
+		
 		XSSFSheet sh = wb.getSheet("Runner");
 		int row = sh.getLastRowNum();
 //		System.out.println(row);

@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,89 +13,204 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.framework.constants.Constants;
 import com.framework.utils.CurrentThreadInstance;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BasePage.
+ */
 public class BasePage {
-	
-	protected BasePage(){
-		PageFactory.initElements(CurrentThreadInstance.getDriver(), this);
-	}
-	
-	private static void explicitlyWait(WebElement element) {
-		WebDriverWait wait=new WebDriverWait(CurrentThreadInstance.getDriver(),Constants.EXPLICITWAIT);
+
+	/**
+	 * Explicitly wait.
+	 *
+	 * @param element the element
+	 */
+	public void explicitlyWait(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(CurrentThreadInstance.getDriver(), Constants.EXPLICITWAIT);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
+
+	/**
+	 * Explicitly wait.
+	 *
+	 * @param element the element
+	 * @param timeout the timeout
+	 */
+	public void explicitlyWait(WebElement element, long timeout) {
+		WebDriverWait wait = new WebDriverWait(CurrentThreadInstance.getDriver(), timeout);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	/**
+	 * Go to url.
+	 *
+	 * @param url the url
+	 */
 	public void goToUrl(String url) {
 		CurrentThreadInstance.getDriver().get(url);
 	}
-
-	public static void click(WebElement element)  {
-		explicitlyWait(element);
-		highlightElement(element);
-		element.click();
-//		LogStatus.pass("Clicking is successfull on "+ element);
-//		LogStatus.pass("Screenshot below", TestUtils.pullScreenshotPath());
-
+	
+	/**
+	 * Element get text.
+	 *
+	 * @param by the by
+	 * @return the string
+	 */
+	public String elementGetText(By by) {
+		return elementGetText(CurrentThreadInstance.getDriver().findElement(by));
 	}
 
-	public static void click(By by)  {
+	/**
+	 * Click.
+	 *
+	 * @param by the by
+	 */
+	public void click(By by) {
 		click(CurrentThreadInstance.getDriver().findElement(by));
 	}
 
-
-	public static void sendkeys(WebElement element, String text)  {
-		explicitlyWait(element);
-		highlightElement(element);
-		element.sendKeys(text);
-//		LogStatus.pass(text + " is entered in to the "+ element);
-//		LogStatus.pass(text + " is entered in to the "+ element, TestUtils.pullScreenshotPath());
-		
-	}
-	
-	public static void sendkeys(By by, String text)  {
+	/**
+	 * Sendkeys.
+	 *
+	 * @param by the by
+	 * @param text the text
+	 */
+	public void sendkeys(By by, String text) {
 		sendkeys(CurrentThreadInstance.getDriver().findElement(by), text);
 	}
-	
-	
-	public static void moveToElement(WebElement element) {
-		Actions actions= new Actions(CurrentThreadInstance.getDriver());
-		actions.moveToElement(element).build().perform();
+
+	/**
+	 * Select by value.
+	 *
+	 * @param by the by
+	 * @param text the text
+	 */
+	public void selectByValue(By by, String text) {
+		selectByValue(CurrentThreadInstance.getDriver().findElement(by), text);
 	}
-	
-	public static void moveToElement(By by) {
+
+	/**
+	 * Select by visible text.
+	 *
+	 * @param by the by
+	 * @param text the text
+	 */
+	public void selectByVisibleText(By by, String text) {
+		selectByVisibleText(CurrentThreadInstance.getDriver().findElement(by), text);
+	}
+
+	/**
+	 * Select by index.
+	 *
+	 * @param by the by
+	 * @param index the index
+	 */
+	public void selectByIndex(By by, int index) {
+		selectByIndex(CurrentThreadInstance.getDriver().findElement(by), index);
+	}
+
+	/**
+	 * Move to element.
+	 *
+	 * @param by the by
+	 */
+	public void moveToElement(By by) {
 		moveToElement(CurrentThreadInstance.getDriver().findElement(by));
 	}
 
-	private static void highlightElement(WebElement element) {
-		((JavascriptExecutor)CurrentThreadInstance.getDriver()).executeScript("arguments[0].style.border='3px solid red'", element);
-	}
-
-	
-	public static void switchToNewWindow() {
+	/**
+	 * Switch to new window.
+	 */
+	public void switchToNewWindow() {
 		String parentWinHandle = CurrentThreadInstance.getDriver().getWindowHandle();
 		Set<String> winHandles = CurrentThreadInstance.getDriver().getWindowHandles();
-		for(String temp:winHandles) {
-			if(!temp.equalsIgnoreCase(parentWinHandle)) {
+		for (String temp : winHandles) {
+			if (!temp.equalsIgnoreCase(parentWinHandle)) {
 				CurrentThreadInstance.getDriver().switchTo().window(temp);
-//				LogStatus.pass("Switched to new Window : " +temp);
 			}
 		}
 	}
 	
-	public static void selectByValue(WebElement element,String text) {
+	/**
+	 * Element get text.
+	 *
+	 * @param element the element
+	 * @return the string
+	 */
+	public String elementGetText(WebElement element) {
+		return element.getText();
+	}
+
+	/**
+	 * Click.
+	 *
+	 * @param element the element
+	 */
+	public void click(WebElement element) {
+		explicitlyWait(element);
+		highlightElement(element);
+		element.click();
+	}
+
+	/**
+	 * Sendkeys.
+	 *
+	 * @param element the element
+	 * @param text the text
+	 */
+	public void sendkeys(WebElement element, String text) {
+		explicitlyWait(element);
+		highlightElement(element);
+		element.sendKeys(text);
+	}
+
+	/**
+	 * Move to element.
+	 *
+	 * @param element the element
+	 */
+	public void moveToElement(WebElement element) {
+		Actions actions = new Actions(CurrentThreadInstance.getDriver());
+		actions.moveToElement(element).build().perform();
+	}
+
+	/**
+	 * Highlight element.
+	 *
+	 * @param element the element
+	 */
+	private void highlightElement(WebElement element) {
+		((JavascriptExecutor) CurrentThreadInstance.getDriver())
+				.executeScript("arguments[0].style.border='3px solid red'", element);
+	}
+
+	/**
+	 * Select by value.
+	 *
+	 * @param element the element
+	 * @param text the text
+	 */
+	public void selectByValue(WebElement element, String text) {
 		new Select(element).selectByValue(text);
-//		LogStatus.pass("Selected dropdown " +element + "with value " +text);
 	}
-	
-	public static void selectByVisibleText(WebElement element,String text) {
+
+	/**
+	 * Select by visible text.
+	 *
+	 * @param element the element
+	 * @param text the text
+	 */
+	public void selectByVisibleText(WebElement element, String text) {
 		new Select(element).selectByVisibleText(text);
-//		LogStatus.pass("Selected dropdown " +element + "with text " +text);
 	}
-	
-	public static void selectByIndex(WebElement element,int index) {
+
+	/**
+	 * Select by index.
+	 *
+	 * @param element the element
+	 * @param index the index
+	 */
+	public void selectByIndex(WebElement element, int index) {
 		new Select(element).selectByIndex(index);
-//		LogStatus.pass("Selected dropdown " +element + "with index " +index);
 	}
-	
-	
 
 }

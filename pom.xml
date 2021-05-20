@@ -5,14 +5,14 @@
 	<groupId>ArunProject</groupId>
 	<artifactId>SeleniumFramework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<repositories>
+	 <repositories>
 		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Repository</name>
 			<url>https://repository.mulesoft.org/nexus/content/repositories/public/
 			</url>
 		</repository>
-	</repositories>
+	</repositories> 
 	<build>
 		<!-- <pluginManagement> -->
 		<plugins>
@@ -76,6 +76,7 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/java/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					<parallel>methods</parallel>
 
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
@@ -125,19 +126,19 @@
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber6-adapter</artifactId>
 			<version>2.7.0</version>
-			<scope>test</scope>
+		<!-- 	<scope>test</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+			<!-- <scope>test</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+		<!-- 	<scope>test</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
